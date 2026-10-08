@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel AI - Full-Stack Cyber Threat & Mobile Security Hub</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="logo-area">
+      <span class="logo-icon">🛡️</span>
+      <div>
+        <h1 class="logo-title">SENTINEL AI HUB</h1>
+        <p style="font-size: 0.75rem; color: #94A3B8;">Autonomous Threat Intelligence & Mobile Authorization Guard</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div class="status-badge">
+        <span class="pulsing-dot"></span>
+        AUTOMATED SCREEN ALERTS: ACTIVE
+      </div>
+      <button id="test-onscreen-alert-btn" class="btn-secondary" style="border-color: #EF4444; color: #EF4444;">
+        ⚠️ Test Windows Screen Alert
+      </button>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="tabs-bar">
+    <button class="tab-btn active" data-target="tab-overview">📊 Threat Center & Live Feed</button>
+    <button class="tab-btn" data-target="tab-url">🌐 URL & Web App Shield</button>
+    <button class="tab-btn" data-target="tab-email">📧 Phishing Email Analyzer</button>
+    <button class="tab-btn" data-target="tab-mobile">📱 Mobile Phone Sentinel & Simulator</button>
+    <button class="tab-btn" data-target="tab-automation">⚡ Real-Time Watchdog Automation</button>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="container">
+
+    <!-- TAB 0: Threat Center Overview & Live Incident Feed -->
+    <section id="tab-overview" class="tab-content active">
+      <!-- Stats Metrics -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+        <div class="card" style="margin-bottom: 0; padding: 1.25rem;">
+          <div style="font-size: 0.8rem; color: #94A3B8; text-transform: uppercase; font-weight: bold;">Threats Blocked</div>
+          <div id="stat-threats" style="font-size: 2rem; font-weight: 800; color: #EF4444; margin-top: 4px;">0</div>
+          <div style="font-size: 0.75rem; color: #CBD5E1; margin-top: 2px;">Critical & High Risk Interceptions</div>
+        </div>
+
+        <div class="card" style="margin-bottom: 0; padding: 1.25rem;">
+          <div style="font-size: 0.8rem; color: #94A3B8; text-transform: uppercase; font-weight: bold;">Total Scans Executed</div>
+          <div id="stat-total" style="font-size: 2rem; font-weight: 800; color: #06B6D4; margin-top: 4px;">0</div>
+          <div style="font-size: 0.75rem; color: #CBD5E1; margin-top: 2px;">URLs, Emails & Device Audits</div>
+        </div>
+
+        <div class="card" style="margin-bottom: 0; padding: 1.25rem;">
+          <div style="font-size: 0.8rem; color: #94A3B8; text-transform: uppercase; font-weight: bold;">Screen Watchdog</div>
+          <div style="font-size: 1.5rem; font-weight: 800; color: #10B981; margin-top: 8px;">ENABLED</div>
+          <div style="font-size: 0.75rem; color: #CBD5E1; margin-top: 2px;">Instant Red Warning Windows</div>
+        </div>
+
+        <div class="card" style="margin-bottom: 0; padding: 1.25rem;">
+          <div style="font-size: 0.8rem; color: #94A3B8; text-transform: uppercase; font-weight: bold;">Mobile Posture</div>
+          <div style="font-size: 1.5rem; font-weight: 800; color: #3B82F6; margin-top: 8px;">AUDITING</div>
+          <div style="font-size: 0.75rem; color: #CBD5E1; margin-top: 2px;">Accessibility & Overlay Guard</div>
+        </div>
+      </div>
+
+      <!-- Quick Attack Simulation Bar -->
+      <div class="card">
+        <h3 style="font-size: 1rem; color: #F8FAFC; margin-bottom: 0.5rem;">⚡ One-Click Threat Simulation & Automated Alert Triggers</h3>
+        <p style="font-size: 0.85rem; color: #94A3B8; margin-bottom: 1rem;">
+          Launch realistic cyber attacks to verify that Sentinel AI detects them and displays the on-screen alert window on your laptop screen.
+        </p>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn-primary" onclick="simulateAttack('phishing_url')" style="background: linear-gradient(135deg, #EF4444, #F97316);">
+            🚨 Test Phishing Web App Attack
+          </button>
+          <button class="btn-primary" onclick="simulateAttack('phishing_email')" style="background: linear-gradient(135deg, #F97316, #EAB308);">
+            📧 Test Fake Account Suspension Email
+          </button>
+          <button class="btn-primary" onclick="simulateAttack('mobile_trojan')" style="background: linear-gradient(135deg, #8B5CF6, #EC4899);">
+            📱 Test Banking Overlay Trojan on Phone
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Incident Feed Table -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h3 style="font-size: 1.1rem; color: #F8FAFC;">📋 Real-Time Threat Interception Log</h3>
+          <button class="btn-secondary" onclick="loadIncidents()" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;">
+            🔄 Refresh Feed
+          </button>
+        </div>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--card-border); color: #94A3B8;">
+                <th style="padding: 0.75rem;">Time</th>
+                <th style="padding: 0.75rem;">Vector Type</th>
+                <th style="padding: 0.75rem;">Target / Indicator</th>
+                <th style="padding: 0.75rem;">Risk Posture</th>
+                <th style="padding: 0.75rem;">Threat Summary</th>
+              </tr>
+            </thead>
+            <tbody id="incidents-table-body">
+              <tr>
+                <td colspan="5" style="padding: 1.5rem; text-align: center; color: #94A3B8;">
+                  No incidents logged yet. Run a scan or click an attack simulation above!
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 1: URL & Web App Scanner -->
+    <section id="tab-url" class="tab-content">
+      <div class="card">
+        <h2 class="card-title">🌐 Scan Website or Web Application</h2>
+        <p class="card-desc">
+          Detects brand typosquatting, deceptive login portals, raw IP addresses, and malicious phishing heuristics.
+        </p>
+
+        <div style="margin-bottom: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span style="font-size: 0.85rem; color: #94A3B8; align-self: center;">Quick Load Sample:</span>
+          <button class="btn-secondary" onclick="loadSampleUrl('paypal')">Fake PayPal (.xyz)</button>
+          <button class="btn-secondary" onclick="loadSampleUrl('ip')">Raw IP Banking Host</button>
+          <button class="btn-secondary" onclick="loadSampleUrl('safe')">Safe Website</button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="target-url">Target URL / Web App Domain</label>
+          <input type="text" id="target-url" class="form-input" placeholder="e.g. http://paypa1-security-verification.xyz/login">
+        </div>
+
+        <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+          <input type="checkbox" id="check-live-ssl">
+          <label for="check-live-ssl" style="font-size: 0.85rem; color: #CBD5E1; cursor: pointer;">
+            Probe Live SSL Certificates & Redirect Chains (Requires Internet)
+          </label>
+        </div>
+
+        <button id="scan-url-btn" class="btn-primary">Analyze URL</button>
+
+        <div id="url-result-box" class="result-box"></div>
+      </div>
+    </section>
+
+    <!-- TAB 2: Email Scanner -->
+    <section id="tab-email" class="tab-content">
+      <div class="card">
+        <h2 class="card-title">📧 Phishing & Fraudulent Email Analyzer</h2>
+        <p class="card-desc">
+          Inspects sender spoofing, display name tricks, Reply-To traps, urgency manipulation, double extensions, and deceptive links.
+        </p>
+
+        <div style="margin-bottom: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span style="font-size: 0.85rem; color: #94A3B8; align-self: center;">Quick Load Sample:</span>
+          <button class="btn-secondary" onclick="loadSampleEmail('phishing')">Phishing Email Attack</button>
+          <button class="btn-secondary" onclick="loadSampleEmail('benign')">Benign Company Email</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="email-sender">From (Display Name & Email)</label>
+            <input type="text" id="email-sender" class="form-input" placeholder="e.g. PayPal Security &lt;support@gmail.com&gt;">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email-replyto">Reply-To Address (Optional)</label>
+            <input type="text" id="email-replyto" class="form-input" placeholder="e.g. attacker-collector@shadowmail.xyz">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email-subject">Subject Line</label>
+          <input type="text" id="email-subject" class="form-input" placeholder="e.g. URGENT: Your account has been suspended">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email-body">Email Body Message</label>
+          <textarea id="email-body" rows="5" class="form-textarea" placeholder="Paste full email text or HTML content..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email-attachments">Attachments (Comma-separated)</label>
+          <input type="text" id="email-attachments" class="form-input" placeholder="e.g. invoice.pdf.exe, receipt.zip">
+        </div>
+
+        <button id="scan-email-btn" class="btn-primary">Analyze Email</button>
+
+        <div id="email-result-box" class="result-box"></div>
+      </div>
+    </section>
+
+    <!-- TAB 3: Mobile Phone Sentinel & Simulator -->
+    <section id="tab-mobile" class="tab-content">
+      <div class="card">
+        <h2 class="card-title">📱 Mobile Phone Security & Authorization Sentinel</h2>
+        <p class="card-desc">
+          Audits mobile apps for rogue authorizations: Banking Trojan Combos (Accessibility + Overlay), Spyware Vectors, and Unjustified Permissions.
+        </p>
+
+        <div class="phone-mockup-wrapper">
+          <!-- Interactive Phone Display -->
+          <div class="phone-mockup">
+            <div class="phone-screen" id="phone-screen-content">
+              <div class="phone-header">
+                <div style="font-weight: bold; color: #F8FAFC;">Sentinel Mobile Shield</div>
+                <div style="font-size: 0.7rem; color: #06B6D4;">Android Protection Active</div>
+              </div>
+              <div style="text-align: center; padding: 2rem 0;">
+                <p style="color: #94A3B8; font-size: 0.8rem; margin-bottom: 1rem;">
+                  Click "Audit Simulated Device" to run a scan on installed mobile applications.
+                </p>
+                <button id="scan-phone-btn" class="btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
+                  Audit Simulated Device
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Explanation & Live ADB Info -->
+          <div style="flex: 1; min-width: 300px;">
+            <div class="card" style="background: rgba(15, 23, 42, 0.8);">
+              <h3 style="font-size: 1rem; color: #06B6D4; margin-bottom: 0.5rem;">How the Phone Sentinel Protects You:</h3>
+              <ul style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6; list-style: square; margin-left: 1.25rem;">
+                <li><strong>Banking Trojan Guard:</strong> Detects <code>Accessibility Service + Draw-Over-Apps</code> combinations used to siphon bank passwords.</li>
+                <li><strong>Stalkerware Guard:</strong> Flags silent background microphone, camera, and continuous location access.</li>
+                <li><strong>Unassessed Permissions:</strong> Flags harmless utilities (e.g. Flashlight, Calculator) holding SMS or Contacts access.</li>
+                <li><strong>One-Tap Remediation:</strong> Prompts the Android uninstaller directly on the device.</li>
+              </ul>
+            </div>
+
+            <div class="card" style="background: rgba(15, 23, 42, 0.8);">
+              <h3 style="font-size: 1rem; color: #10B981; margin-bottom: 0.5rem;">Physical Android Phone Connected?</h3>
+              <p style="font-size: 0.85rem; color: #94A3B8; margin-bottom: 0.75rem;">
+                You can audit your actual physical phone directly from your laptop via USB Debugging.
+              </p>
+              <code style="display: block; background: #000; padding: 0.6rem; border-radius: 6px; font-size: 0.8rem; color: #06B6D4;">
+                python mobile/adb_quick_scan.py
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: Automation Watchdog Controls -->
+    <section id="tab-automation" class="tab-content">
+      <div class="card">
+        <h2 class="card-title">⚡ Real-Time On-Screen Alert Automation</h2>
+        <p class="card-desc">
+          Automated background shield that continuously protects your laptop. Whenever a harmful link or fake email is copied or detected, Sentinel AI instantly displays a top-level warning window on your screen.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          <div class="card" style="background: rgba(15, 23, 42, 0.8);">
+            <h3 style="font-size: 1rem; color: #06B6D4; margin-bottom: 0.5rem;">📋 Clipboard Sentinel</h3>
+            <p style="font-size: 0.85rem; color: #94A3B8; margin-bottom: 1rem;">
+              Monitors copied links and text. If you copy a phishing link from any app (Discord, WhatsApp Web, Slack, Email), a red alert pops up immediately over all windows.
+            </p>
+            <div style="font-size: 0.85rem; color: #10B981; font-weight: bold;">
+              STATUS: RUNNING IN BACKGROUND
+            </div>
+          </div>
+
+          <div class="card" style="background: rgba(15, 23, 42, 0.8);">
+            <h3 style="font-size: 1rem; color: #EF4444; margin-bottom: 0.5rem;">🖥️ Windows Topmost Alert Window</h3>
+            <p style="font-size: 0.85rem; color: #94A3B8; margin-bottom: 1rem;">
+              Displays an urgent warning on top of all applications with audio beep and technical breakdown.
+            </p>
+            <button onclick="document.getElementById('test-onscreen-alert-btn').click()" class="btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
+              Trigger Screen Alert Test
+            </button>
+          </div>
+        </div>
+
+        <div class="card" style="background: rgba(15, 23, 42, 0.8); margin-top: 1rem;">
+          <h3 style="font-size: 1rem; color: #CBD5E1; margin-bottom: 0.5rem;">How to Run Background Guard Standalone:</h3>
+          <p style="font-size: 0.85rem; color: #94A3B8; margin-bottom: 0.5rem;">
+            Run this in any PowerShell window to keep clipboard and desktop protection active 24/7:
+          </p>
+          <code style="display: block; background: #000; padding: 0.6rem; border-radius: 6px; font-size: 0.8rem; color: #06B6D4;">
+            python -m automation.background_watchdog
+          </code>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

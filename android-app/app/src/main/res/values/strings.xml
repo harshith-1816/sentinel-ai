@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sentinel Mobile Shield</string>
+    <string name="scan_now">Scan Device Now</string>
+    <string name="scanning">Auditing Permissions…</string>
+    <string name="device_safe">Device Posture Protected</string>
+    <string name="threats_detected">Dangerous Authorizations Flagged</string>
+</resources>
